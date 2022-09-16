@@ -22,7 +22,7 @@ Route::get('/login', function() {return 'login';})->name('site.login');
 //Agrupando rotas pelo prefixo "/app"
 Route::prefix('/app')->group(function() {
     Route::get('/clientes', function() {return 'clientes';})->name('app.clientes');
-    Route::get('/fornecedores', function() {return 'fornecedores';})->name('app.fornecedores');
+    Route::get('/fornecedores', 'FornecedorController@index')->name('app.fornecedores');
     Route::get('/produtos', function() {return 'produtos';})->name('app.produtos');
 });
 
@@ -39,6 +39,6 @@ Route::get('/dev', function() { echo 'AMBIENTE DE DESENVOLVIMENTO';})->name('sit
 
 //Rota de Fallback - Quando a rota não é valida ela direciona pra outra
 Route::fallback(function() {
-   echo 'Oppsss... essa rota não existe, clique no botão pra voltar ao início!','<br>',
+   echo 'Oppsss... essa rota não existe, clique no botão pra voltar ao início!','<br />',
        '<a href="'.route('site.index').'">VOLTAR</a>';
 });
